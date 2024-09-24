@@ -1,0 +1,7 @@
+Logging-Utilities
+-----------------
+
+A library that contains logging utility classes that replace the need for the SLF4J extension package.
+
+Current version: 1.0.0.
+~~~~~~~~~~~~~~~~~~~~~~~
