@@ -1,6 +1,7 @@
 package net.jmp.util.logging;
 
 /*
+ * (#)LoggerConstants.java  1.1.0   09/27/2024
  * (#)LoggerConstants.java  1.0.0   09/24/2024
  *
  * MIT License
@@ -28,9 +29,14 @@ package net.jmp.util.logging;
 
 /// Constants defined for use by the logging utility.
 ///
-/// @version    1.0.0
+/// @version    1.1.0
 /// @since      1.0.0
 final class LoggerConstants {
+    /// The text for a catching message.
+    ///
+    /// @since  1.1.0
+    static final String CATCHING = "catching";
+
     /// The text for a trace entry message.
     static final String ENTRY = "entry";
 

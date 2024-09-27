@@ -1,6 +1,7 @@
 package net.jmp.util.logging;
 
 /*
+ * (#)LoggerUtils.java  1.1.0   09/27/2024
  * (#)LoggerUtils.java  1.0.0   09/24/2024
  *
  * MIT License
@@ -26,18 +27,49 @@ package net.jmp.util.logging;
  * SOFTWARE.
  */
 
-import static net.jmp.util.logging.LoggerConstants.ENTRY;
-import static net.jmp.util.logging.LoggerConstants.EXIT;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
+import static net.jmp.util.logging.LoggerConstants.*;
 
 /// Logger utilities to assist in creating
 /// trace entry and exit records.
 ///
-/// @version    1.0.0
+/// @version    1.1.0
 /// @since      1.0.0
 public final class LoggerUtils {
     /// The default constructor.
     private LoggerUtils() {
         super();
+    }
+
+    /// Format a catching message.
+    ///
+    /// @param  throwable   java.lang.Throwable
+    /// @return             java.lang.String
+    /// @since              1.1.0
+    public static String catching(final Throwable throwable) {
+        final StringBuilder sb = new StringBuilder();
+
+        String stackTrace = null;
+
+        try (final StringWriter sw = new StringWriter()) {
+            throwable.printStackTrace(new PrintWriter(sw));
+
+            stackTrace = sw.toString();
+        } catch (final IOException ioe) {
+            ioe.printStackTrace(System.err);
+        }
+
+        if (stackTrace != null) {
+            sb.append(CATCHING).append('\n');
+            sb.append(stackTrace);
+
+            return sb.toString();
+        } else {
+            return "";
+        }
     }
 
     /// Format a trace entry message.

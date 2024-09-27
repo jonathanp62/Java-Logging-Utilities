@@ -1,6 +1,7 @@
 package net.jmp.util.logging;
 
 /*
+ * (#)TestLoggerUtils.java  1.1.0   09/27/2024
  * (#)TestLoggerUtils.java  1.0.0   09/24/2024
  *
  * MIT License
@@ -36,9 +37,21 @@ import org.junit.Test;
 
 /// The test class for LoggerUtils.
 ///
-/// @version    1.0.0
+/// @version    1.1.0
 /// @since      1.0.0
 public class TestLoggerUtils {
+    @Test
+    public void testCatching() {
+        try {
+            final int i = 1 / 0;
+        } catch (final Exception e) {
+            final String result = catching(e);
+
+            assertNotNull(result);
+            assertTrue(result.startsWith("catching\njava.lang.ArithmeticException: / by zero"));
+        }
+    }
+
     @Test
     public void testEntry() {
         final String result = entry();
