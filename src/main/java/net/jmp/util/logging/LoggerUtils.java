@@ -44,32 +44,21 @@ public final class LoggerUtils {
         super();
     }
 
+    /// An enumeration of stack trace handlers
+    ///
+    /// @since  1.1.0
+    private enum StackTraceHandlerType {
+        CATCHING,
+        THROWING;
+    }
+
     /// Format a catching message.
     ///
     /// @param  throwable   java.lang.Throwable
     /// @return             java.lang.String
     /// @since              1.1.0
     public static String catching(final Throwable throwable) {
-        final StringBuilder sb = new StringBuilder();
-
-        String stackTrace = null;
-
-        try (final StringWriter sw = new StringWriter()) {
-            throwable.printStackTrace(new PrintWriter(sw));
-
-            stackTrace = sw.toString();
-        } catch (final IOException ioe) {
-            ioe.printStackTrace(System.err);
-        }
-
-        if (stackTrace != null) {
-            sb.append(CATCHING).append('\n');
-            sb.append(stackTrace);
-
-            return sb.toString();
-        } else {
-            return "";
-        }
+        return catchingOrThrowing(StackTraceHandlerType.CATCHING, throwable);
     }
 
     /// Format a trace entry message.
@@ -113,10 +102,51 @@ public final class LoggerUtils {
     /// @param  object  java.lang.Object
     /// @return         java.lang.String
     public static String exitWith(final Object object) {
+        return EXIT + " with (" + object + ")";
+    }
+
+    /// Format a throwing message.
+    ///
+    /// @param  throwable   java.lang.Throwable
+    /// @return             java.lang.String
+    /// @since              1.1.0
+    public static String throwing(final Throwable throwable) {
+        return catchingOrThrowing(StackTraceHandlerType.THROWING, throwable);
+    }
+
+    /// Build and return a string for either
+    /// the catching or the throwing methods.
+    ///
+    /// @param  type        net.jmp.util.logging.LoggerUtils.StackTraceHandlerType
+    /// @param  throwable   java.lang.Throwable
+    /// @return             java.lang.String
+    /// @since              1.1.0
+    private static String catchingOrThrowing(final StackTraceHandlerType type,
+                                             final Throwable throwable) {
         final StringBuilder sb = new StringBuilder();
 
-        sb.append(EXIT).append(" with (").append(object).append(")");
+        String stackTrace = null;
 
-        return sb.toString();
+        try (final StringWriter sw = new StringWriter()) {
+            throwable.printStackTrace(new PrintWriter(sw));
+
+            stackTrace = sw.toString();
+        } catch (final IOException ioe) {
+            ioe.printStackTrace(System.err);
+        }
+
+        if (stackTrace != null) {
+            switch (type) {
+                case StackTraceHandlerType.CATCHING -> sb.append(CATCHING);
+                case StackTraceHandlerType.THROWING -> sb.append(THROWING);
+                default -> throw new IllegalStateException("Stack trace handler type is unrecognized");
+            }
+
+            sb.append('\n').append(stackTrace);
+
+            return sb.toString();
+        } else {
+            return "";
+        }
     }
 }

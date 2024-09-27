@@ -103,4 +103,16 @@ public class TestLoggerUtils {
         assert result != null;
         assertEquals("exit with (123)", result);
     }
+
+    @Test
+    public void testThrowing() {
+        try {
+            final int i = 1 / 0;
+        } catch (final Exception e) {
+            final String result = throwing(e);
+
+            assertNotNull(result);
+            assertTrue(result.startsWith("throwing\njava.lang.ArithmeticException: / by zero"));
+        }
+    }
 }

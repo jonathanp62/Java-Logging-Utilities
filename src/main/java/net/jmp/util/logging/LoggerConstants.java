@@ -43,6 +43,11 @@ final class LoggerConstants {
     /// The text for a trace exit message.
     static final String EXIT = "exit";
 
+    /// The text for a throwing message.
+    ///
+    /// @since  1.1.0
+    static final String THROWING = "throwing";
+
     /// The default constructor.
     private LoggerConstants() {
         super();
