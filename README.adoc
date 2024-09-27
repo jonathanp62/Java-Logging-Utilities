@@ -3,5 +3,17 @@ Logging-Utilities
 
 A library that contains logging utility classes that replace the need for the SLF4J extension package.
 
-Current version: 1.0.0.
+Static Classes
+~~~~~~~~~~~~~~
+
+The following static classes are provided that mimic the behaviors of the SLF4J extension classes. However, the classes below simply return formatted strings and do not perform logging.
+
+* catching
+* entry
+* entryWith
+* exit
+* exitWith
+* throwing
+
+Current version: 1.1.0.
 ~~~~~~~~~~~~~~~~~~~~~~~

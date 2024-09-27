@@ -48,7 +48,10 @@ public final class LoggerUtils {
     ///
     /// @since  1.1.0
     private enum StackTraceHandlerType {
+        /// When catching a throwable
         CATCHING,
+
+        /// When throwing a throwable
         THROWING;
     }
 
