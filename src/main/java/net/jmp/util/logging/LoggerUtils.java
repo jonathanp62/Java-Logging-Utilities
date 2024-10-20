@@ -1,6 +1,7 @@
 package net.jmp.util.logging;
 
 /*
+ * (#)LoggerUtils.java  scratch 10/20/2024
  * (#)LoggerUtils.java  1.1.0   09/27/2024
  * (#)LoggerUtils.java  1.0.0   09/24/2024
  *
@@ -32,6 +33,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import static net.jmp.util.logging.LoggerConstants.*;
+
+import org.slf4j.Logger;
 
 /// Logger utilities to assist in creating
 /// trace entry and exit records.
@@ -115,6 +118,20 @@ public final class LoggerUtils {
     /// @since              1.1.0
     public static String throwing(final Throwable throwable) {
         return catchingOrThrowing(StackTraceHandlerType.THROWING, throwable);
+    }
+
+    /// Format a throwing message and rethrow the throwable.
+    ///
+    /// @param  throwable   java.lang.Throwable
+    /// @param  logger      org.slf4j.Logger
+    /// @return             java.lang.Throwable
+    /// @since              scratch
+    public static Throwable throwing(final Throwable throwable, final Logger logger) {
+        if (logger.isErrorEnabled()) {
+            logger.error(catchingOrThrowing(StackTraceHandlerType.THROWING, throwable));
+        }
+
+        return throwable;
     }
 
     /// Build and return a string for either

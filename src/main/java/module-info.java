@@ -1,4 +1,5 @@
 /*
+ * (#)module-info.java  scratch 10/20/2024
  * (#)module-info.java  1.0.0   09/24/2024
  *
  * MIT License
@@ -29,6 +30,7 @@
 /// @since  1.0.0
 module logging.utilities {
     requires java.base;
+    requires org.slf4j;
 
     exports net.jmp.util.logging;
 }
