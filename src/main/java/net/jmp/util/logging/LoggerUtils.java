@@ -1,7 +1,7 @@
 package net.jmp.util.logging;
 
 /*
- * (#)LoggerUtils.java  scratch 10/20/2024
+ * (#)LoggerUtils.java  1.2.0   10/20/2024
  * (#)LoggerUtils.java  1.1.0   09/27/2024
  * (#)LoggerUtils.java  1.0.0   09/24/2024
  *
@@ -39,7 +39,7 @@ import org.slf4j.Logger;
 /// Logger utilities to assist in creating
 /// trace entry and exit records.
 ///
-/// @version    1.1.0
+/// @version    1.2.0
 /// @since      1.0.0
 public final class LoggerUtils {
     /// The default constructor.

@@ -1,6 +1,7 @@
 package net.jmp.util.logging;
 
 /*
+ * (#)TestLoggerUtils.java  1.2.0   10/21/2024
  * (#)TestLoggerUtils.java  1.1.0   09/27/2024
  * (#)TestLoggerUtils.java  1.0.0   09/24/2024
  *
@@ -35,9 +36,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /// The test class for LoggerUtils.
 ///
-/// @version    1.1.0
+/// @version    1.2.0
 /// @since      1.0.0
 public class TestLoggerUtils {
     @Test
@@ -105,14 +109,28 @@ public class TestLoggerUtils {
     }
 
     @Test
-    public void testThrowing() {
+    public void testThrowingWithoutLogger() {
         try {
-            final int i = 1 / 0;
+            final int _ = 1 / 0;
         } catch (final Exception e) {
             final String result = throwing(e);
 
             assertNotNull(result);
             assertTrue(result.startsWith("throwing\njava.lang.ArithmeticException: / by zero"));
+        }
+    }
+
+    @Test
+    public void testThrowingWithLogger() {
+        final Logger logger = LoggerFactory.getLogger("test.logger");
+
+        try {
+            final int _ = 1 / 0;
+        } catch (final Exception e) {
+            final Throwable t = throwing(e, logger);
+
+            assertNotNull(t);
+            assertEquals(e, t);
         }
     }
 }

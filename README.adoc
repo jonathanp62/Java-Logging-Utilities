@@ -6,7 +6,7 @@ A library that contains logging utility classes that replace the need for the SL
 Static Classes
 ~~~~~~~~~~~~~~
 
-The following static classes are provided that mimic the behaviors of the SLF4J extension classes. However, the classes below simply return formatted strings and do not perform logging.
+The following static classes are provided that mimic the behaviors of the SLF4J extension classes. However, most of the classes below simply return formatted strings and do not perform logging. The throwing method that takes a Logger does perform logging.
 
 * catching
 * entry
@@ -15,5 +15,5 @@ The following static classes are provided that mimic the behaviors of the SLF4J 
 * exitWith
 * throwing
 
-Current version: 1.1.0.
+Current version: 1.2.0.
 ~~~~~~~~~~~~~~~~~~~~~~~

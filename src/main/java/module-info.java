@@ -1,6 +1,8 @@
 /*
- * (#)module-info.java  scratch 10/20/2024
+ * (#)module-info.java  1.2.0   10/20/2024
  * (#)module-info.java  1.0.0   09/24/2024
+ *
+ * @version  1.2.0
  *
  * MIT License
  *
