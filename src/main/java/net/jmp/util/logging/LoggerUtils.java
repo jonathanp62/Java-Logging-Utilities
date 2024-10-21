@@ -125,7 +125,7 @@ public final class LoggerUtils {
     /// @param  throwable   java.lang.Throwable
     /// @param  logger      org.slf4j.Logger
     /// @return             java.lang.Throwable
-    /// @since              scratch
+    /// @since              1.2.0
     public static Throwable throwing(final Throwable throwable, final Logger logger) {
         if (logger.isErrorEnabled()) {
             logger.error(catchingOrThrowing(StackTraceHandlerType.THROWING, throwable));
