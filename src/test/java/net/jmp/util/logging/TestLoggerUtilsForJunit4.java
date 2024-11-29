@@ -1,9 +1,10 @@
 package net.jmp.util.logging;
 
 /*
- * (#)TestLoggerUtils.java  1.2.0   10/21/2024
- * (#)TestLoggerUtils.java  1.1.0   09/27/2024
- * (#)TestLoggerUtils.java  1.0.0   09/24/2024
+ * (#)TestLoggerUtilsForJunit4.java 1.3.0   11/29/2024
+ * (#)TestLoggerUtilsForJunit4.java 1.2.0   10/21/2024
+ * (#)TestLoggerUtilsForJunit4.java 1.1.0   09/27/2024
+ * (#)TestLoggerUtilsForJunit4.java 1.0.0   09/24/2024
  *
  * MIT License
  *
@@ -41,9 +42,9 @@ import org.slf4j.LoggerFactory;
 
 /// The test class for LoggerUtils.
 ///
-/// @version    1.2.0
+/// @version    1.3.0
 /// @since      1.0.0
-public class TestLoggerUtils {
+public final class TestLoggerUtilsForJunit4 {
     @Test
     public void testCatching() {
         try {
@@ -60,7 +61,7 @@ public class TestLoggerUtils {
     public void testEntry() {
         final String result = entry();
 
-        assert result != null;
+        assertNotNull(result);
         assertEquals(ENTRY, result);
     }
 
@@ -68,17 +69,17 @@ public class TestLoggerUtils {
     public void testEntryWith() {
         String result = entryWith(true);
 
-        assert result != null;
+        assertNotNull(result);
         assertEquals("entry with (true)", result);
 
         result = entryWith(123, true);
 
-        assert result != null;
+        assertNotNull(result);
         assertEquals("entry with (123, true)", result);
 
         result = entryWith(123, "some string", true);
 
-        assert result != null;
+        assertNotNull(result);
         assertEquals("entry with (123, some string, true)", result);
     }
 
@@ -86,7 +87,7 @@ public class TestLoggerUtils {
     public void testExit() {
         final String result = exit();
 
-        assert result != null;
+        assertNotNull(result);
         assertEquals(EXIT, result);
     }
 
@@ -94,17 +95,17 @@ public class TestLoggerUtils {
     public void testExitWith() {
         String result = exitWith(true);
 
-        assert result != null;
+        assertNotNull(result);
         assertEquals("exit with (true)", result);
 
         result = exitWith("some string");
 
-        assert result != null;
+        assertNotNull(result);
         assertEquals("exit with (some string)", result);
 
         result = exitWith(123);
 
-        assert result != null;
+        assertNotNull(result);
         assertEquals("exit with (123)", result);
     }
 
